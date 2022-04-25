@@ -2,7 +2,7 @@
 *    Title: SHA512 C++ implementation
 *    Author: Kazimierz Kochan
 *    Date: April 2022
-*    Code version: 1.0
+*    Code version: 1.1
 *    Availability: https://github.com/KazimierzKochan/SHA512cpp
 *
 ***************************************************************************************/
@@ -31,7 +31,7 @@ class SHA512{
 		string digest(string preprocessedMessage);
 
 		//used data type
-    	typedef unsigned long long uint64;
+    		typedef unsigned long long uint64;
 
 		//FIrst 64 bits of the fractional parts of squares of first 8 prime numbers (2..19)
 		uint64 hStart[8] = {

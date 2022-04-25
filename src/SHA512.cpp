@@ -2,7 +2,7 @@
 *    Title: SHA512 C++ implementation
 *    Author: Kazimierz Kochan
 *    Date: April 2022
-*    Code version: 1.0
+*    Code version: 1.1
 *    Availability: https://github.com/KazimierzKochan/SHA512cpp
 *
 ***************************************************************************************/
@@ -11,6 +11,7 @@
 #include <bitset>
 #include <sstream>
 #include <cstring>
+#include <fstream>
 #include "SHA512.h"
 
 using namespace std;
@@ -37,13 +38,21 @@ string SHA512::hashString(string message){
 	return result;
 }
 
-string SHA512::hashFile(const string filename){
+string SHA512::hashFile(const string fileName){
 	//check if file exists and can be opened
-	//read file byte wise
+	ifstream inputFile(fileName);
+	if(!inputFile.is_open()){
+		cerr << "Could not open file: '" << fileName << "'" << endl;
+		exit(EXIT_FAILURE);
+	}
+	//read file
+	string fileChars = string(istreambuf_iterator<char>(inputFile), istreambuf_iterator<char>());
 	//preprocess
+	string preprocessed = preprocess(fileChars);
 	//digest
+	string result = digest(preprocessed);
 	//return
-	return("Hashing files not implemented yet");
+	return result;
 }
 
 /**

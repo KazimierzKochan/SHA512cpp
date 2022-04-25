@@ -2,7 +2,7 @@
 *    Title: SHA512 demo program
 *    Author: Kazimierz Kochan
 *    Date: April 2022
-*    Code version: 1.0
+*    Code version: 1.1
 *    Availability: https://github.com/KazimierzKochan/SHA512cpp
 *
 ***************************************************************************************/
