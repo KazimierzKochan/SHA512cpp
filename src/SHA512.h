@@ -2,7 +2,7 @@
 *    Title: SHA512 C++ implementation
 *    Author: Kazimierz Kochan
 *    Date: April 2022
-*    Code version: 1.1
+*    Code version: 1.2
 *    Availability: https://github.com/KazimierzKochan/SHA512cpp
 *
 ***************************************************************************************/
@@ -12,6 +12,9 @@
 #include <iostream>
 #include <bitset>
 #include <sstream>
+#include <stdint.h>
+#include <cstring>
+#include <fstream>
 
 using namespace std;
 
@@ -30,11 +33,8 @@ class SHA512{
 		//Calculating hash
 		string digest(string preprocessedMessage);
 
-		//used data type
-    		typedef unsigned long long uint64;
-
-		//FIrst 64 bits of the fractional parts of squares of first 8 prime numbers (2..19)
-		uint64 hStart[8] = {
+		//First 64 bits of the fractional parts of squares of first 8 prime numbers (2..19)
+		uint64_t hStart[8] = {
 			0x6a09e667f3bcc908ULL,
 			0xbb67ae8584caa73bULL,
 			0x3c6ef372fe94f82bULL,
@@ -45,8 +45,8 @@ class SHA512{
 			0x5be0cd19137e2179ULL
 			};
 
-		//FIrst 64 bits of the fractional parts of squares of first 80 prime numbers (2..409)
-		uint64 k[80] = {
+		//First 64 bits of the fractional parts of squares of first 80 prime numbers (2..409)
+		uint64_t k[80] = {
 			0x428a2f98d728ae22ULL, 0x7137449123ef65cdULL, 0xb5c0fbcfec4d3b2fULL, 0xe9b5dba58189dbbcULL, 0x3956c25bf348b538ULL,
             0x59f111f1b605d019ULL, 0x923f82a4af194f9bULL, 0xab1c5ed5da6d8118ULL, 0xd807aa98a3030242ULL, 0x12835b0145706fbeULL,
             0x243185be4ee4b28cULL, 0x550c7dc3d5ffb4e2ULL, 0x72be5d74f27b896fULL, 0x80deb1fe3b1696b1ULL, 0x9bdc06a725c71235ULL,
